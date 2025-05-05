@@ -112,7 +112,7 @@ s
     // deleteProduct
     // Eliminar un producto
 
-    async deleteProduct(pid) {
+    async deleteProduct({pid}) {
         const index = this.products.findIndex((product) => product.id === pid);
         if (index === -1) {
             console.error(`No se encontró el producto con id ${pid}`);
@@ -123,7 +123,7 @@ s
             await this.saveOnFile();
             return this.products;
         } catch (error) {
-            console.error("Error al eliminar el producto", error);
+            console.error("Error 1 al eliminar el producto", error);
         }
     }
 

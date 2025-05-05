@@ -59,7 +59,7 @@ productsRoute.post("/", async (req, res) => {
     }
 });
 
-productsRoute.put("/:id", async (req, res) => {
+productsRoute.put("/:pid", async (req, res) => {
     const { pid } = req.params;
     const { updatedProduct } = req.body;
     try {
@@ -76,15 +76,15 @@ productsRoute.put("/:id", async (req, res) => {
     }
 });
 
-productsRoute.delete("/:id", async (req, res) => {
-    const { pid } = req.params;
+productsRoute.delete("/:pid", async (req, res) => {
+    const  {pid}  = req.params;
     try {
-        const product = await productManager.deleteProduct({ pid });
+        const product = await productManager.deleteProduct( {pid} );
         if (!product) {
             return res.status(404).json({ error: "producto no encontrado" });
         }
         res.status(200).json(product);
     } catch (error) {
-        res.status(500).json({ error: "error al eliminar el producto" });
+        res.status(500).json({ error: "error 2 al eliminar el producto" });
     }
 });

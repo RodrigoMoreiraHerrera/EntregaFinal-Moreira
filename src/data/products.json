@@ -1,10 +1,54 @@
 [
   {
-    "id": "bcc705ba-6b72-4f81-9bad-289a2d5eb600",
-    "title": "nuevo2"
+    "id": "b365bbc7-90bb-4085-bd49-ad9de49c16c4",
+    "title": "Laptop Gamer",
+    "description": "Potente laptop para juegos con procesador de última generación.",
+    "code": "LAP123",
+    "price": 1500,
+    "status": true,
+    "stock": 20,
+    "category": "Tecnología",
+    "thumbnails": [
+      "https://th.bing.com/th/id/OIP.JBtUf09v1O7p8Zd5wYxVRgHaE8?rs=1&pid=ImgDetMain"
+    ]
   },
   {
-    "id": "67294222-ddbc-4e61-a91a-ea343e162b3e",
-    "title": "nuevo3"
+    "id": "8718bcac-a76c-4360-8bc0-af55f9b76f7a",
+    "title": "Smartphone Pro",
+    "description": "Teléfono inteligente con cámara de alta resolución y pantalla AMOLED.",
+    "code": "SMT456",
+    "price": 800,
+    "status": true,
+    "stock": 50,
+    "category": "Tecnología",
+    "thumbnails": [
+      "https://th.bing.com/th/id/OIP.a2hrVhBcYIXtBLx7DBf5BgHaHa?rs=1&pid=ImgDetMain"
+    ]
+  },
+  {
+    "id": "7a1b82bb-7054-4412-a775-cd32fc44abb5",
+    "title": "Auriculares Inalámbricos",
+    "description": "Auriculares con cancelación de ruido y batería de larga duración.",
+    "code": "AUD789",
+    "price": 200,
+    "status": true,
+    "stock": 0,
+    "category": "Accesorios",
+    "thumbnails": [
+      "https://img.freepik.com/vector-gratis/conjunto-concepto-diseno-realista-auriculares-estereo-equipo-audio-inalambrico-similar-ilustracion-vectorial-aislada_1284-81645.jpg"
+    ]
+  },
+  {
+    "id": "5663f717-c0f1-4ded-8932-03261016b5bc",
+    "title": "Monitor Ultra HD",
+    "description": "Monitor de 27 pulgadas con resolución 4K y tecnología HDR.",
+    "code": "MON012",
+    "price": 500,
+    "status": true,
+    "stock": 15,
+    "category": "Tecnología",
+    "thumbnails": [
+      "https://th.bing.com/th/id/OIP.JWAd7uCvanrU28RgzzZvIwHaE8?rs=1&pid=ImgDetMain"
+    ]
   }
 ]
