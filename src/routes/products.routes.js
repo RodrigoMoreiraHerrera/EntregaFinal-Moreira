@@ -79,11 +79,14 @@ productsRoute.put("/:pid", async (req, res) => {
 productsRoute.delete("/:pid", async (req, res) => {
     const  {pid}  = req.params;
     try {
-        const product = await productManager.deleteProduct( {pid} );
-        if (!product) {
+        const product = await productManager.getProductById({ pid })
+        const deleteProduct = await productManager.deleteProduct( {pid} );
+        if (!deleteProduct) {
             return res.status(404).json({ error: "producto no encontrado" });
         }
-        res.status(200).json(product);
+        io.emit("delete-product", product);
+
+        res.status(200).json(deleteProduct);
     } catch (error) {
         res.status(500).json({ error: "error 2 al eliminar el producto" });
     }

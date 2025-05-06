@@ -43,7 +43,7 @@ s
     // getProductById
     // Obtener un producto por su ID
 
-    async getProductById(pid) {
+    async getProductById({pid}) {
         const product = this.products.find((product) => product.id === pid);
         if (!product) {
             console.error(`No se encontró el producto con id ${pid}`);

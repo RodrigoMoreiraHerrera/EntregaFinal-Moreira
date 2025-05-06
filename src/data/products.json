@@ -26,20 +26,7 @@
     ]
   },
   {
-    "id": "7a1b82bb-7054-4412-a775-cd32fc44abb5",
-    "title": "Auriculares Inalámbricos",
-    "description": "Auriculares con cancelación de ruido y batería de larga duración.",
-    "code": "AUD789",
-    "price": 200,
-    "status": true,
-    "stock": 0,
-    "category": "Accesorios",
-    "thumbnails": [
-      "https://img.freepik.com/vector-gratis/conjunto-concepto-diseno-realista-auriculares-estereo-equipo-audio-inalambrico-similar-ilustracion-vectorial-aislada_1284-81645.jpg"
-    ]
-  },
-  {
-    "id": "5663f717-c0f1-4ded-8932-03261016b5bc",
+    "id": "023a885d-4a5d-48e2-af33-bb80b3b6d729",
     "title": "Monitor Ultra HD",
     "description": "Monitor de 27 pulgadas con resolución 4K y tecnología HDR.",
     "code": "MON012",
