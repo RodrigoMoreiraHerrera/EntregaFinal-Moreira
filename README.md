@@ -35,10 +35,33 @@ Body:
 }
 ```
 
+# Copiar el ID DEL PRODUCTO
+
 ## GET devuelve el producto con el id
 
 ```bash
 localhost:8080/api/products/"[ID DEL PRODUCTO]"
+```
+
+## PUT actualiza el producto con el id
+
+```bash
+localhost:8080/api/products/"[ID DEL PRODUCTO]"
+```
+
+Body:
+
+```bash
+{
+     "title": "Monitor Ultra HD",
+    "description": "Monitor de 27 pulgadas con resolución 4K y tecnología HDR.",
+    "code": "MON012",
+    "price": 501,
+    "status": true,
+    "stock": 15,
+    "category": "Tecnología",
+    "thumbnails": ["https://th.bing.com/th/id/OIP.JWAd7uCvanrU28RgzzZvIwHaE8?rs=1&pid=ImgDetMain"]
+}
 ```
 
 ## DELETE elimana un producto con el id
@@ -46,6 +69,8 @@ localhost:8080/api/products/"[ID DEL PRODUCTO]"
 ```bash
 localhost:8080/api/products/"[ID DEL PRODUCTO]"
 ```
+
+
 
 
 
