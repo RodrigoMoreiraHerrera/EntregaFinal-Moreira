@@ -35,10 +35,17 @@ Body:
 }
 ```
 
+## GET devuelve el producto con el id
+
+```bash
+localhost:8080/api/products/"[ID DEL PRODUCTO]"
+```
 
 ## DELETE elimana un producto con el id
 
 ```bash
-localhost:8080/api/products/[ID DEL PRODUCTO]
+localhost:8080/api/products/"[ID DEL PRODUCTO]"
 ```
+
+
 

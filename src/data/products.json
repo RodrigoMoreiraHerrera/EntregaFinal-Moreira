@@ -24,18 +24,5 @@
     "thumbnails": [
       "https://th.bing.com/th/id/OIP.a2hrVhBcYIXtBLx7DBf5BgHaHa?rs=1&pid=ImgDetMain"
     ]
-  },
-  {
-    "id": "023a885d-4a5d-48e2-af33-bb80b3b6d729",
-    "title": "Monitor Ultra HD",
-    "description": "Monitor de 27 pulgadas con resolución 4K y tecnología HDR.",
-    "code": "MON012",
-    "price": 500,
-    "status": true,
-    "stock": 15,
-    "category": "Tecnología",
-    "thumbnails": [
-      "https://th.bing.com/th/id/OIP.JWAd7uCvanrU28RgzzZvIwHaE8?rs=1&pid=ImgDetMain"
-    ]
   }
 ]
