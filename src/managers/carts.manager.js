@@ -74,7 +74,7 @@ class CartManager {
     if (product) {
       product.quantity += quantity;
     } else {
-      cart.products.push({ id: productId, quantity });
+      cart.products.push({ id: productId, quantity: quantity });
     }
 
     try {

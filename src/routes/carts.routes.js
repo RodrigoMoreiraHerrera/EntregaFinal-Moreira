@@ -35,7 +35,8 @@ cartsRoute.get("/:cid", async (req, res) => {
 
 cartsRoute.post("/:cid/product/:pid", async (req, res) => {
     const { cid, pid } = req.params;
-    const { quantity } = req.body;
+    const  {quantity}  = req.body;
+    
     try {
         const cart = await cartManager.postById({ id: cid, productId: pid, quantity });
         res.status(201).json(cart);
