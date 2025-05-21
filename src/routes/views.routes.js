@@ -1,15 +1,21 @@
 import { Router } from "express";
-import fs from "node:fs"
-import { productManager } from "../managers/products.manager.js";
+import { productModel } from "../models/product.model.js";
 
 export const viewsRoutes = Router();
 
-const products = JSON.parse(fs.readFileSync(productManager.path, "utf-8"));
-
-viewsRoutes.get("/", (req, res) => {
-    res.render("home", { products });
+viewsRoutes.get("/", async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+  const options = {
+    page: parseInt(page),
+    limit: parseInt(limit),
+    lean: true,
+  };
+  const productsDocs = await productModel.paginate({}, options);
+  const products = productsDocs.docs;
+  console.log(productsDocs);
+  res.render("home", { products, realtimeUrl: "/realtimeproducts" });
 });
 
-viewsRoutes.get("/products", (req, res) => {
-    res.render("realtimeproducts", );
+viewsRoutes.get("/realtimeproducts", (req, res) => {
+  res.render("realtimeproducts");
 });

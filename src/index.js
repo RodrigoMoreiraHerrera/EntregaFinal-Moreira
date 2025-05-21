@@ -14,7 +14,10 @@ import { cartsRoute } from "./routes/carts.routes.js";
 
 import { productManager } from "./managers/products.manager.js";
 
-const products = JSON.parse(fs.readFileSync(productManager.path, "utf-8"));
+
+import mongoose from "mongoose";
+import { productModel } from "./models/product.model.js";
+
 
 const app = express();
 const PORT = 8080;
@@ -42,14 +45,21 @@ app.use("/api/products", productsRoute);
 app.use("/api/carts", cartsRoute);
 
 
+mongoose.connect("mongodb+srv://rodrigomh11:EOyzGoDTZT1hM9zN@cluster0.4k0vr.mongodb.net/Backend1")
+.then(() => {
+    console.log("Connected to MongoDB");
+}).catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+});
+
 
 const server = app.listen(PORT, () => 
     console.log(`Server running on port http://localhost:${PORT}`));
 
 export const io = new Server(server);
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
     console.log("New connection", socket.id);
-
+    const products = await productModel.find();
     socket.emit("init", products);
 });

@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { productManager } from "../managers/products.manager.js";
 import { io } from "../index.js";
+import { productModel } from "../models/product.model.js";
 
 export const productsRoute = Router();
 
 productsRoute.get("/", async (req, res) => {
   try {
-    const products = await productManager.getProducts();
+    const products = await productModel.find();
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: "error al obtener los productos" });
@@ -16,7 +16,7 @@ productsRoute.get("/", async (req, res) => {
 productsRoute.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await productManager.getProductById({ id });
+    const product = await productModel.findById(id);
 
     if (!product) {
       return res.status(404).json({ error: "producto no encontrado" });
@@ -39,31 +39,32 @@ productsRoute.post("/", async (req, res) => {
     thumbnails,
   } = req.body;
 
-  try {
-    const product = await productManager.addProduct({
-      title,
-      description,
-      code,
-      price,
-      status,
-      stock,
-      category,
-      thumbnails,
-    });
-
-    io.emit("new-product", product);
-
-    res.status(201).json(product);
-  } catch (error) {
-    res.status(500).json({ error: "error al guardar el producto" });
+  const productExist = await productModel.findOne({ code });
+  if (productExist) {
+    return res.status(400).json({ error: "el producto ya existe route" });
   }
+
+  let product = await productModel.insertOne({
+    title,
+    description,
+    code,
+    price,
+    status,
+    stock,
+    category,
+    thumbnails,
+  });
+  io.emit("new-product", product);
+  res.send({ status: "success", payload: product });
 });
 
 productsRoute.put("/:pid", async (req, res) => {
   const { pid } = req.params;
   const updatedProduct = req.body;
   try {
-    const product = await productManager.updateProduct({ pid }, updatedProduct);
+    const product = await productModel.findByIdAndUpdate(pid, updatedProduct, {
+      new: true,
+    });
     if (!product) {
       return res.status(404).json({ error: "producto no encontrado" });
     }
@@ -77,14 +78,14 @@ productsRoute.put("/:pid", async (req, res) => {
 productsRoute.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await productManager.getProductById({ id });
-    const deleteProduct = await productManager.deleteProduct({ id });
+    const product = await productModel.findById(id);
+    const deleteProduct = await productModel.deleteOne({ _id: id });
     if (!deleteProduct) {
       return res.status(404).json({ error: "producto no encontrado" });
     }
     io.emit("delete-product", product);
 
-    res.status(200).json(deleteProduct);
+    res.status(200).json(deleteProduct, product);
   } catch (error) {
     res.status(500).json({ error: "error 2 al eliminar el producto" });
   }
