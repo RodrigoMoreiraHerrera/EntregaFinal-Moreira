@@ -16,7 +16,7 @@ cartsRoute.get("/", async (req, res) => {
 cartsRoute.get("/:cid", async (req, res) => {
   const { cid } = req.params;
   try {
-    const cart = await cartModel.findById(cid);
+    const cart = await cartModel.findById(cid).populate("products.product");
     if (!cart) {
       return res.status(404).json({ error: "carrito no encontrado" });
     }
