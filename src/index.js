@@ -32,6 +32,9 @@ app.engine(
     Handlebars.engine({
         extname: ".hbs",
         defaultLayout: "main",
+        helpers: {
+      multiply: (a, b) => a * b,
+    },
 
     })
 );

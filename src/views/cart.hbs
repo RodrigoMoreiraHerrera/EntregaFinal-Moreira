@@ -1,0 +1,34 @@
+<div class="max-w-3xl mx-auto mt-10 bg-white rounded-lg shadow-lg p-8">
+  <h1 class="text-2xl font-bold mb-6 text-center">Carrito de Compras</h1>
+  {{#if cart.products.length}}
+    <ul>
+      {{#each cart.products}}
+        <li class="flex items-center justify-between border-b py-4">
+          <div class="flex items-center gap-4">
+            <img
+              class="w-16 h-16 object-cover rounded"
+              src="{{this.product.thumbnails.[0]}}"
+              alt="Imagen de {{this.product.title}}"
+              onerror="this.src='https://via.placeholder.com/64'"
+            />
+            <div>
+              <div class="font-semibold">{{this.product.title}}</div>
+              <div class="text-gray-500 text-sm">Cantidad: {{this.quantity}}</div>
+              <div class="text-gray-500 text-sm">Precio: ${{this.product.price}}</div>
+            </div>
+          </div>
+          <span class="font-bold text-lg text-green-600">${{multiply this.product.price this.quantity}}</span>
+        </li>
+      {{/each}}
+    </ul>
+    <div class="flex justify-end mt-6">
+      <span class="text-xl font-bold">Total: ${{cartTotal}}</span>
+    </div>
+    <div class="flex justify-end mt-4">
+      <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Vaciar Carrito</button>
+      <button class="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Finalizar Compra</button>
+    </div>
+  {{else}}
+    <p class="text-center text-gray-500">Tu carrito está vacío.</p>
+  {{/if}}
+</div>
